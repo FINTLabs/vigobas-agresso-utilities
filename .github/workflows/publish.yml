@@ -24,7 +24,7 @@ jobs:
         run: cd $GITHUB_WORKSPACE
       
       - name: Restore Packages
-        run: nuget restore Vigo.Bas.Agresso.WebServices.csproj
+        run: nuget restore Vigo.Bas.Agresso.WebServices.sln
       
       - name: Get tag
         id: get_tag
