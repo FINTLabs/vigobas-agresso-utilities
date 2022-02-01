@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>The first implementation of the UserAdministration Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702">
+      <s:element name="GetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressList" type="tns:ArrayOfAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="Roles" type="tns:ArrayOfRoleReference" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clients" type="tns:ArrayOfClientReference" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserTypes" type="tns:ArrayOfUserType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultClient" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccessHoursFrom" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccessHoursTo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Printer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertMedia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Workflow" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MenuAccess" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Administrator" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomainUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Place" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pager" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Home" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Assistant" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMailList" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMailCopyList" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRoleReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RoleReference" nillable="true" type="tns:RoleReference" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RoleReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoleId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clients" type="tns:ArrayOfClientReference" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClientReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClientReference" nillable="true" type="tns:ClientReference" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClientReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Status">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active" />
+          <s:enumeration value="Parked" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="Terminated" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfUserType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserType" nillable="true" type="tns:UserType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterFile" type="tns:MasterFileType" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterFileValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MasterFileType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Resource" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="roleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="activeOnly" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUsersByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userIds" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersByUserIdResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="activeOnly" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRolesResult" type="tns:ArrayOfRole" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Role">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoleId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clients" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangeUserStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userIds" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="tns:Status" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollBackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeUserStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangeUserStatusResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfResponseItem" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemsFailed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestCommitted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResponseItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResponseItem" nillable="true" type="tns:ResponseItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResponseItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasErrors" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ModifyUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="users" type="tns:ArrayOfUser" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollBackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyUsersResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPasswords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userIds" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollbackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPasswordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResetPasswordsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameterValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="paramName" type="tns:ParameterName" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ParameterName">
+        <s:restriction base="s:string">
+          <s:enumeration value="Language" />
+          <s:enumeration value="Printer" />
+          <s:enumeration value="Priority" />
+          <s:enumeration value="AlertMedia" />
+          <s:enumeration value="AddressType" />
+          <s:enumeration value="Country" />
+          <s:enumeration value="Client" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetParameterValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParameterValuesResult" type="tns:ArrayOfParameter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="tns:Parameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Parameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateUsersWithDefaults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fields" type="tns:ArrayOfBasicUserProperties" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollBackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBasicUserProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BasicUserProperties" nillable="true" type="tns:BasicUserProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BasicUserProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateUsersWithDefaultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUsersWithDefaultsResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="users" type="tns:ArrayOfUser" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollBackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUsersResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsersByCloning">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fields" type="tns:ArrayOfBasicUserProperties" />
+            <s:element minOccurs="0" maxOccurs="1" name="userToClone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rollBackEnabled" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUsersByCloningResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUsersByCloningResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClients">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resourceId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateFromIn" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateToIn" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResourcesResult" type="tns:ArrayOfResource" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfResource">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="tns:Resource" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Resource">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResourceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthdate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SocialSecurityNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResourceTypes" type="tns:ArrayOfResourceType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCenters" type="tns:ArrayOfCostCenter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationUnits" type="tns:ArrayOfOrganizationUnit" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbTableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addresses" type="tns:ArrayOfAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="Employments" type="tns:ArrayOfEmployment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResourceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResourceType" nillable="true" type="tns:ResourceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResourceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCostCenter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CostCenter" nillable="true" type="tns:CostCenter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CostCenter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrganizationUnit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrganizationUnit" nillable="true" type="tns:OrganizationUnit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrganizationUnit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmployment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment" nillable="true" type="tns:Employment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentTypeDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MainPosition" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Percentage" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostIdDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCodeDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SalaryPerYears" type="tns:ArrayOfSalaryPerYear" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeniorityDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="WageRule" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationUnits" type="tns:ArrayOfOrganizationUnit" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCenters" type="tns:ArrayOfCostCenter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Workplaces" type="tns:ArrayOfWorkplace" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostGroups" type="tns:ArrayOfPostGroup" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkTimeGroups" type="tns:ArrayOfWorkTimeGroup" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbTableName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSalaryPerYear">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SalaryPerYear" nillable="true" type="tns:SalaryPerYear" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SalaryPerYear">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWorkplace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Workplace" nillable="true" type="tns:Workplace" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Workplace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPostGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PostGroup" nillable="true" type="tns:PostGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PostGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWorkTimeGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WorkTimeGroup" nillable="true" type="tns:WorkTimeGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WorkTimeGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ModifyResource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resource" type="tns:Resource" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyResourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyResourceResult" type="tns:ResponseItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resources" type="tns:ArrayOfResource" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyResourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyResourcesResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="relationType" type="tns:RelationType" />
+            <s:element minOccurs="0" maxOccurs="1" name="relationKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resourceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newValue" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="RelationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Resource" />
+          <s:enumeration value="Position" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ModifyRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyRelationResult" type="tns:ResponseItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelationIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelationIdsResult" type="tns:ArrayOfRelationId" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRelationId">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RelationId" nillable="true" type="tns:RelationId" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RelationId">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RelationKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelationType" type="tns:RelationType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWorkplaces">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkplacesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkplacesResult" type="tns:ArrayOfWorkPlace" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWorkPlace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WorkPlace" nillable="true" type="tns:WorkPlace" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WorkPlace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkplaceValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkplaceDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationNumberValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationNumberDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LegalOrganizationNumberValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LegalOrganizationNumberDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOrganization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrganizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrganizationResult" type="tns:ArrayOfOrganization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrganization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Organization" nillable="true" type="tns:Organization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Organization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrganizationUnitLevel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationUnitValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationUnitName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HeadOfOrganizationUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentOrganizationUnitValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentOrganizationUnitName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersByUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUserStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeUserStatus" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUserStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeUserStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyUsers" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordsSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetPasswords" />
+  </wsdl:message>
+  <wsdl:message name="ResetPasswordsSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetPasswordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameterValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameterValues" />
+  </wsdl:message>
+  <wsdl:message name="GetParameterValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameterValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersWithDefaultsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUsersWithDefaults" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersWithDefaultsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUsersWithDefaultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUsers" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersByCloningSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUsersByCloning" />
+  </wsdl:message>
+  <wsdl:message name="CreateUsersByCloningSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUsersByCloningResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClients" />
+  </wsdl:message>
+  <wsdl:message name="GetClientsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AboutSoapIn">
+    <wsdl:part name="parameters" element="tns:About" />
+  </wsdl:message>
+  <wsdl:message name="AboutSoapOut">
+    <wsdl:part name="parameters" element="tns:AboutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResources" />
+  </wsdl:message>
+  <wsdl:message name="GetResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyResourceSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyResource" />
+  </wsdl:message>
+  <wsdl:message name="ModifyResourceSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyResources" />
+  </wsdl:message>
+  <wsdl:message name="ModifyResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyRelation" />
+  </wsdl:message>
+  <wsdl:message name="ModifyRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelationIds" />
+  </wsdl:message>
+  <wsdl:message name="GetRelationIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelationIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkplacesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkplaces" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkplacesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkplacesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrganizationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrganization" />
+  </wsdl:message>
+  <wsdl:message name="GetOrganizationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserAdministrationV200702Soap">
+    <wsdl:operation name="GetUser">
+      <wsdl:documentation>This method retrieves a single user.</wsdl:documentation>
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:documentation>This method retrieves a list of users. The string paramaters are used as search parameters for finding
+      users, and can have a wildcard value or be null, in which case the parameter is ignored.</wsdl:documentation>
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByUserId">
+      <wsdl:documentation>This method retrieves a list of users based upon a list of user Ids given as a
+      parameter.</wsdl:documentation>
+      <wsdl:input message="tns:GetUsersByUserIdSoapIn" />
+      <wsdl:output message="tns:GetUsersByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:documentation>This method retrieves a list of roles. The string paramaters are used as search parameters for finding
+      roles, and can have a wildcard value or be null, in which case the parameter is ignored.</wsdl:documentation>
+      <wsdl:input message="tns:GetRolesSoapIn" />
+      <wsdl:output message="tns:GetRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserStatus">
+      <wsdl:documentation>Changes the status for a list of users.</wsdl:documentation>
+      <wsdl:input message="tns:ChangeUserStatusSoapIn" />
+      <wsdl:output message="tns:ChangeUserStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUsers">
+      <wsdl:documentation>This method modifies the users within the system to the values given in the paramter list of
+      users.</wsdl:documentation>
+      <wsdl:input message="tns:ModifyUsersSoapIn" />
+      <wsdl:output message="tns:ModifyUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPasswords">
+      <wsdl:documentation>Resets the password of each user specified so that during next logon they are prompted to change their
+      password.</wsdl:documentation>
+      <wsdl:input message="tns:ResetPasswordsSoapIn" />
+      <wsdl:output message="tns:ResetPasswordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameterValues">
+      <wsdl:documentation>This method is used to lookup paramter values.</wsdl:documentation>
+      <wsdl:input message="tns:GetParameterValuesSoapIn" />
+      <wsdl:output message="tns:GetParameterValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsersWithDefaults">
+      <wsdl:documentation>This method creates a set of users where certain fields are given default values.</wsdl:documentation>
+      <wsdl:input message="tns:CreateUsersWithDefaultsSoapIn" />
+      <wsdl:output message="tns:CreateUsersWithDefaultsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <wsdl:documentation>This method creates a set of users.</wsdl:documentation>
+      <wsdl:input message="tns:CreateUsersSoapIn" />
+      <wsdl:output message="tns:CreateUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsersByCloning">
+      <wsdl:documentation>This method creates a set users by cloning a particular user.</wsdl:documentation>
+      <wsdl:input message="tns:CreateUsersByCloningSoapIn" />
+      <wsdl:output message="tns:CreateUsersByCloningSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClients">
+      <wsdl:documentation>This method gets a list of clients that belong to a particular role.</wsdl:documentation>
+      <wsdl:input message="tns:GetClientsSoapIn" />
+      <wsdl:output message="tns:GetClientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="About">
+      <wsdl:documentation>Diagnostics method that checks for presence of nessecary components and database
+      connection</wsdl:documentation>
+      <wsdl:input message="tns:AboutSoapIn" />
+      <wsdl:output message="tns:AboutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <wsdl:input message="tns:GetResourcesSoapIn" />
+      <wsdl:output message="tns:GetResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyResource">
+      <wsdl:input message="tns:ModifyResourceSoapIn" />
+      <wsdl:output message="tns:ModifyResourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyResources">
+      <wsdl:input message="tns:ModifyResourcesSoapIn" />
+      <wsdl:output message="tns:ModifyResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRelation">
+      <wsdl:input message="tns:ModifyRelationSoapIn" />
+      <wsdl:output message="tns:ModifyRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationIds">
+      <wsdl:input message="tns:GetRelationIdsSoapIn" />
+      <wsdl:output message="tns:GetRelationIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkplaces">
+      <wsdl:input message="tns:GetWorkplacesSoapIn" />
+      <wsdl:output message="tns:GetWorkplacesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganization">
+      <wsdl:input message="tns:GetOrganizationSoapIn" />
+      <wsdl:output message="tns:GetOrganizationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserAdministrationV200702Soap" type="tns:UserAdministrationV200702Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByUserId">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetUsersByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserStatus">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ChangeUserStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUsers">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ModifyUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPasswords">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ResetPasswords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameterValues">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetParameterValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsersWithDefaults">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/CreateUsersWithDefaults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsers">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/CreateUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUsersByCloning">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/CreateUsersByCloning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClients">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/About" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyResource">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ModifyResource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyResources">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ModifyResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyRelation">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/ModifyRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationIds">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetRelationIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkplaces">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetWorkplaces" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganization">
+      <soap:operation soapAction="http://services.agresso.com/UserAdministrationService/UserAdministrationV200702/GetOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserAdministrationV200702">
+    <wsdl:documentation>The first implementation of the UserAdministration Web Service</wsdl:documentation>
+    <wsdl:port name="UserAdministrationV200702Soap" binding="tns:UserAdministrationV200702Soap">
+      <soap:address location="http://asptstbat006.asptst.ergogroup.no/afktstmx-webservices/service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
