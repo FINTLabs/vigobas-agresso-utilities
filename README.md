@@ -2,6 +2,7 @@
 
 ## Description
 Utilities for the Agresso web services. Used by Agresso HR Resource MA and Agresso User MA.
+Install this utility from Nuget.
 
 Version 1.7.0 is the first public versjon. For older versions see: https://vigobas.vigoiks.no/VigoBAS/systemdokumentasjon/releasenotes/
 
